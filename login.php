@@ -12,7 +12,7 @@
             session_start();
             
             $_SESSION['id'] = $users[0]['id'];
-            $_SESSION['password'] = $users[0]['clave'];
+            $_SESSION['email'] = $users[0]['correo'];
             $_SESSION['name'] = $users[0]['nombre'];
 
             redireccionar('home.php');
