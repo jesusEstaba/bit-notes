@@ -1,13 +1,18 @@
 <?php
     require('utilities.php');
+    require('conexion.php');
 
     session_start();
 
-    if ( !isset($_SESSION['id']) ) {
+    if ( ! isset( $_SESSION['id'] ) ) {
         redireccionar('index.php');
     }
 
     $user_name = $_SESSION['name'];
+    $user_id = $_SESSION['id'];
+
+    $notas = consulta("SELECT * FROM notas
+    WHERE usuario='$user_id' ");
 
 ?>
 <!DOCTYPE html>
@@ -67,32 +72,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="card mb-1">
-                    <div class="card-header text-right">
-                        <span class="badge badge-success">Baja</span>
-                        <a href="#" class="btn btn-outline-danger btn-sm">X</a>
+                <?php foreach($notas as $nota): ?>
+                    <div class="card mb-1">
+                        <div class="card-header text-right">
+                            <span class="badge badge-success">Baja</span>
+                            <a href="borrar.php?id=<?php echo $nota['id'] ?>" class="btn btn-outline-danger btn-sm">X</a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                            <?php echo $nota['contenido'] ?>
+                            </p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            Some quick example text to build 
-                            on the card title and make up the 
-                            bulk of the card's content.
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header text-right">
-                    <span class="badge badge-danger">Alta</span>
-                        <a href="#" class="btn btn-outline-danger btn-sm">X</a>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            Some quick example text to build 
-                            on the card title and make up the 
-                            bulk of the card's content.
-                        </p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
