@@ -9,7 +9,7 @@
         function todas() {
             require('conexion.php');
 
-            return consulta(" SELECT * FROM notas WHERE usuario='$userId' ");
+            return consulta(" SELECT * FROM notas WHERE usuario='$this->userId' ");
         }
 
         function eliminar($id) {
