@@ -5,11 +5,11 @@
         private $nombre;
 
         function __construct($isLogin = false) {
+            session_start();
+
             if ($isLogin) {
                 return;
             }
-
-            session_start();
 
             if ( ! isset( $_SESSION['id'] ) ) {
                 require('utilities.php');
@@ -21,7 +21,6 @@
         }
 
         function agregar($nombre, $valor) {
-            session_start();
             $_SESSION[$nombre] = $valor;
         }
 
