@@ -1,8 +1,9 @@
 <?php
-    require('modelos/InicioDeSesion.php');
-    
     $correo = $_GET['correo'];
     $clave = $_GET['clave'];
+
+    require('controladores/ControladorDeInicioDeSesion.php');
     
-    $inicioDeSesion = new InicioDeSesion();
-    $inicioDeSesion->entrar($correo, $clave);
+    $controlador = new ControladorDeInicioDeSesion();
+    $controlador->iniciar($correo, $clave);
+    

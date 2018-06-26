@@ -1,8 +1,5 @@
 <?php
-    require('modelos/InicioDeSesion.php');
+    require('controladores/ControladorDeInicioDeSesion.php');
     
-    $inicioDeSesion = new InicioDeSesion();
-    $inicioDeSesion->salir();
-
-    require('utilities.php');
-    redireccionar('index.php');
+    $controlador = new ControladorDeInicioDeSesion();
+    $controlador->cerrar();
