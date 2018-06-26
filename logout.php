@@ -1,7 +1,8 @@
 <?php
-    require('utilities.php');
-
-    session_start();
-    session_destroy();
+    require('modelos/InicioDeSesion.php');
     
+    $inicioDeSesion = new InicioDeSesion();
+    $inicioDeSesion->salir();
+
+    require('utilities.php');
     redireccionar('index.php');

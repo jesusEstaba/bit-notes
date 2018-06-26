@@ -32,4 +32,8 @@
         function obtenerNombre() {
             return $this->nombre;
         }
+
+        function cerrar() {
+            session_destroy();
+        }
     }
