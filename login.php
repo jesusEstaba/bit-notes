@@ -9,11 +9,11 @@
 
     if (count($users)) {
         if ($users[0]['clave'] == $password) {
-            session_start();
+            require('utilidades/Sesion.php');
             
-            $_SESSION['id'] = $users[0]['id'];
-            $_SESSION['email'] = $users[0]['correo'];
-            $_SESSION['name'] = $users[0]['nombre'];
+            $sesion = new Sesion(true);
+            $sesion->agregar('id', $users[0]['id']);
+            $sesion->agregar('nombre', $users[0]['nombre']);
 
             redireccionar('home.php');
         } else {

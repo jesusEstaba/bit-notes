@@ -1,16 +1,11 @@
 <?php
-    require('utilities.php');
+    require('utilidades/Sesion.php');
     
-
-    session_start();
-
-    if ( ! isset( $_SESSION['id'] ) ) {
-        redireccionar('index.php');
-    }
-
-    $user_name = $_SESSION['name'];
-    $user_id = $_SESSION['id'];
-
+    $sesion = new Sesion();
+    
+    $user_id = $sesion->ObtenerId();
+    $user_name = $sesion->obtenerNombre();
+    
     $nota = new Nota($user_id);
     $notas = $nota->todas();
 
