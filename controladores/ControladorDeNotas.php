@@ -1,39 +1,36 @@
 <?php
     class ControladorDeNotas {
-        function incio() {
+        private $nota;
+        private $nombreDeUsuario;
+
+        function __construct() {
             require('utilidades/Sesion.php');
     
-            $sesion = new Sesion();
-            
-            $user_id = $sesion->ObtenerId();
-            $user_name = $sesion->obtenerNombre();
+            $sesion = new Sesion();            
+            $userId = $sesion->ObtenerId();
+            $this->nombreDeUsuario = $sesion->ObtenerNombre();
             
             require('modelos/Nota.php');
-            $nota = new Nota($user_id);
-            $notas = $nota->todas();
+
+            $this->nota = new Nota($userId);
+        }
+
+        function incio() {
+            $notas = $this->nota->todas();
+            $user_name = $this->nombreDeUsuario;
 
             require('vistas/home.php');
         }
 
         function agregar($notaInput) {
-            require('utilidades/Sesion.php');
-    
-            $sesion = new Sesion();            
-            $userId = $sesion->ObtenerId();
-            
-            require('modelos/Nota.php');
-            $nota = new Nota($userId);
-            $nota->crear($notaInput);
+            $this->nota->crear($notaInput);
             
             require('utilities.php');
             redireccionar('home.php');
         }
 
         function borrar($id) {
-            require('modelos/Nota.php');
-
-            $nota = new Nota();
-            $nota->borrar($id);
+            $this->nota->eliminar($id);
 
             require('utilities.php');
             redireccionar('home.php');
