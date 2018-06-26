@@ -15,6 +15,20 @@
             require('vistas/home.php');
         }
 
+        function agregar($notaInput) {
+            require('utilidades/Sesion.php');
+    
+            $sesion = new Sesion();            
+            $userId = $sesion->ObtenerId();
+            
+            require('modelos/Nota.php');
+            $nota = new Nota($userId);
+            $nota->crear($notaInput);
+            
+            require('utilities.php');
+            redireccionar('home.php');
+        }
+
         function borrar($id) {
             require('modelos/Nota.php');
 

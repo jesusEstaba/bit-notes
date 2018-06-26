@@ -31,25 +31,27 @@
     <div class="container">
         <div class="row mt-4 mb-4">
             <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <textarea name="nota" class="form-control"></textarea>
+                <form action="agregar.php">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea name="nota" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select name="prioridad" class="form-control">
+                                    <option value="">Baja</option>
+                                    <option value="">Media</option>
+                                    <option value="">Alta</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-success">Guardar</button>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <select name="prioridad" class="form-control">
-                                <option value="">Baja</option>
-                                <option value="">Media</option>
-                                <option value="">Alta</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-success">Guardar</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
