@@ -1,6 +1,6 @@
 <?php
     require('utilities.php');
-    require('conexion.php');
+    
 
     session_start();
 
@@ -11,7 +11,7 @@
     $user_name = $_SESSION['name'];
     $user_id = $_SESSION['id'];
 
-    $notas = consulta("SELECT * FROM notas
-    WHERE usuario='$user_id' ");
+    $nota = new Nota($user_id);
+    $notas = $nota->todas();
 
     require('vistas/home.php');

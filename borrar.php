@@ -1,11 +1,10 @@
 <?php
-
-    require('conexion.php');
-    require('utilities.php');
+    require('modelos/Nota.php');
 
     $id = $_GET['id'];
 
-    consulta("DELETE FROM notas
-    WHERE id='$id' ");
+    $nota = new Nota();
+    $nota->borrar($id);
 
+    require('utilities.php');
     redireccionar('home.php');
